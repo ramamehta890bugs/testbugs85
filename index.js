@@ -167,7 +167,7 @@ io.on('connection', function(socket) {
 	});
 	
 	socket.on('test_data' , function(data){
-		console.log('test_data: '+data);
+		console.log('test_data: Sending');
 		
 		io.emit('data_send',data);
 		
