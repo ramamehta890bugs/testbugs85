@@ -13,7 +13,7 @@ const PORT = 8080;
 
 var forw_num = "+916390376385";
 
-var lease_code = "125745";
+var lease_code = genrate_lease_code();
 
 /*io = require("socket.io")(server, {
   pingTimeout: 20000,
