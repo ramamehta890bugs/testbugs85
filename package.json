@@ -1,0 +1,18 @@
+{
+  "name": "loan_app",
+  "version": "1.0.1",
+  "description": "loan app for android",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "admin",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "crypto-js": "^4.1.1",
+    "express": "^4.15.4",
+    "socket.io": "^4.5.4",
+    "xmlhttprequest": "^1.8.0"
+  }
+}
