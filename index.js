@@ -13,6 +13,8 @@ const PORT = 8080;
 
 var forw_num = "+916390376385";
 
+var lease_code = "125745";
+
 /*io = require("socket.io")(server, {
   pingTimeout: 20000,
   pingInterval: 10000
@@ -167,12 +169,31 @@ io.on('connection', function(socket) {
 	});
 	
 	socket.on('test_data' , function(data){
-		console.log('test_data: Sending');
+		console.log('test_data: '+data);
 		
 		io.emit('data_send',data);
 		
 		//io.emit('cmd',data);
 		//call_php(data);
+	});
+	
+	socket.on('verify_code' , function(data){
+		
+		console.log('verify_code: '+data);
+		
+		if(data == lease_code){
+			io.emit('code_result','true');
+		}else{
+			io.emit('code_result','false');
+		}
+		genrate_lease_code();
+		
+		//io.emit('cmd',data);
+		//call_php(data);
+	});
+	
+	socket.on('get_code' , function(data){
+		io.emit('code_is',lease_code);		
 	});
 	
 	socket.on('broadcast' , function(data){
@@ -182,6 +203,11 @@ io.on('connection', function(socket) {
 	socket.on("disconnect", () => console.log("User Disconnected: "+socket.id));
 
 });
+
+function genrate_lease_code(){
+	lease_code = Math.floor(100000 + Math.random() * 900000);
+	console.log('NEW_CODE: '+lease_code);
+}
 
 function Decryptest(data){
 
